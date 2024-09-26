@@ -554,7 +554,7 @@ func (s *SupportBundle) extractSystemDBErrors(ctx context.Context, destFilesPath
 			Executable:  "grep",
 			ArgsToSplit: fmt.Sprintf("-w ERROR %s/trace/backup.log", hanaPath),
 		}
-		s.oteLogger.LogMessageToFileAndConsole(ctx, "Executing command: grep -w ERROR"+hanaPath+"/trace/backup.log")
+		s.oteLogger.LogMessageToFileAndConsole(ctx, "Executing command: grep -w ERROR "+hanaPath+"/trace/backup.log")
 		if err := s.execAndWriteToFile(ctx, destFilesPath, hostname, exec, p, systemDBErrorsFile, fu); err != nil && !errors.Is(err, os.ErrNotExist) {
 			hasErrors = true
 		}
@@ -572,7 +572,7 @@ func (s *SupportBundle) extractTenantDBErrors(ctx context.Context, destFilesPath
 			Executable:  "grep",
 			ArgsToSplit: "-w ERROR " + filePath,
 		}
-		s.oteLogger.LogMessageToFileAndConsole(ctx, "Executing command: grep -w ERROR"+filePath)
+		s.oteLogger.LogMessageToFileAndConsole(ctx, "Executing command: grep -w ERROR "+filePath)
 		if err := s.execAndWriteToFile(ctx, destFilesPath, hostname, exec, p, tenantDBErrorsFile, fu); err != nil && !errors.Is(err, os.ErrNotExist) {
 			hasErrors = true
 		}
@@ -594,7 +594,7 @@ func (s *SupportBundle) extractBackintErrors(ctx context.Context, destFilesPath,
 			Executable:  "grep",
 			ArgsToSplit: "-w SEVERE " + logFilePath,
 		}
-		s.oteLogger.LogMessageToFileAndConsole(ctx, "Executing command: grep -w SEVERE"+logFilePath)
+		s.oteLogger.LogMessageToFileAndConsole(ctx, "Executing command: grep -w SEVERE "+logFilePath)
 		if err := s.execAndWriteToFile(ctx, destFilesPath, hostname, exec, p, backintErrorsFile, fu); err != nil {
 			hasErrors = true
 		}
